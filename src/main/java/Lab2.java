@@ -20,7 +20,7 @@ public class Lab2 {
                     optionOne(scanner);
                     break;
                 case "2":
-                    optionTwo(scanner);
+//                    optionTwo(scanner);
                     break;
                 case "3":
                     break;
