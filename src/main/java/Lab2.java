@@ -23,18 +23,38 @@ public class Lab2 {
                     optionTwo(scanner);
                     break;
                 case "3":
+                    optionThree(scanner);
                     break;
                 default:
+                    System.out.println("Invalid input");
 
             }
             System.out.println("Would you like to perform another operation?\n" +
-                    "Type 'yes' to perform another operation, or any other words to exit.");
+                    "Type 'yes' to perform another operation, or any other words to exit: ");
             // Clean up the input buffer [\r\n+]
             scanner.skip("\\R?");
             input = scanner.nextLine();
-        } while (input.equals("yes"));
+        } while (input.trim().equals("yes"));
         scanner.close();
     }
+
+    private static void optionThree(Scanner scanner) {
+        int width = 0, height = 0;
+        String box_width = "";
+
+        System.out.println("Enter the width of the box to draw: ");
+        width = scanner.nextInt();
+        System.out.println("Enter the height of the box to draw: ");
+        height = scanner.nextInt();
+
+        for (int i = 0; i < width; i++) {
+            box_width += "*";
+        }
+        for (int i = 0; i < height; i++) {
+            System.out.println(box_width);
+        }
+    }
+
     private static void optionTwo(Scanner scanner) {
         System.out.println("Enter as many positive numbers as you'd like.\n" +
                 "When you are finished, enter a negative number.");
@@ -54,11 +74,11 @@ public class Lab2 {
         int amount, max, min;
         System.out.println("How many numbers do you want to generation?");
         amount = scanner.nextInt();
-        System.out.println("Enter the minimum number for the random number generation");
+        System.out.println("Enter the minimum number for the random number generation: ");
         min = scanner.nextInt();
-        System.out.println("Enter the maximum number for the random number generation");
+        System.out.println("Enter the maximum number for the random number generation: ");
         max = scanner.nextInt();
-        System.out.println("Here are the numbers that were generated:");
+        System.out.println("Here are the numbers that were generated: ");
         for (int i = 1; i <= amount; i++) {
             int output = random.nextInt(max);
             output += min;
