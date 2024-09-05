@@ -20,7 +20,7 @@ public class Lab2 {
                     optionOne(scanner);
                     break;
                 case "2":
-//                    optionTwo(scanner);
+                    optionTwo(scanner);
                     break;
                 case "3":
                     break;
@@ -34,6 +34,19 @@ public class Lab2 {
             input = scanner.nextLine();
         } while (input.equals("yes"));
         scanner.close();
+    }
+    private static void optionTwo(Scanner scanner) {
+        System.out.println("Enter as many positive numbers as you'd like.\n" +
+                "When you are finished, enter a negative number.");
+        int number = 0, total = 0;
+        int counter = 0;
+        while (true) {
+            number = scanner.nextInt();
+            if (number < 0) break;
+            total = total + number;
+            counter++;
+        }
+        System.out.println("The average of all numbers you entered is: " + ((0.0 + total) / counter));
     }
 
     private static void optionOne(Scanner scanner) {
