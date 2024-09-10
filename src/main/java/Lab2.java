@@ -39,34 +39,42 @@ public class Lab2 {
     }
 
     private static void optionThree(Scanner scanner) {
-        int width = 0, height = 0;
-        String box_width = "";
+        int width, height;
+
 
         System.out.println("Enter the width of the box to draw: ");
         width = scanner.nextInt();
         System.out.println("Enter the height of the box to draw: ");
         height = scanner.nextInt();
 
-        for (int i = 0; i < width; i++) {
-            box_width += "*";
-        }
+        // O(n^2)
         for (int i = 0; i < height; i++) {
-            System.out.println(box_width);
+            for (int j = 0; j < width; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
         }
+
+        // O(n)
+//        String box_width = "";
+//        for (int i = 0; i < width; i++) { box_width = box_width + "*"; }
+//        for (int i = 0; i < height; i++) { System.out.println(box_width); }
+
     }
 
     private static void optionTwo(Scanner scanner) {
         System.out.println("Enter as many positive numbers as you'd like.\n" +
                 "When you are finished, enter a negative number.");
-        int number = 0, total = 0;
+        double number = 0, total = 0;
         int counter = 0;
         while (true) {
-            number = scanner.nextInt();
+            number = scanner.nextDouble();
             if (number < 0) break;
             total = total + number;
             counter++;
         }
-        System.out.println("The average of all numbers you entered is: " + ((0.0 + total) / counter));
+        System.out.format("The average of all numbers you entered is: %.2f \n", total / counter);
+
     }
 
     private static void optionOne(Scanner scanner) {
@@ -80,8 +88,7 @@ public class Lab2 {
         max = scanner.nextInt();
         System.out.println("Here are the numbers that were generated: ");
         for (int i = 1; i <= amount; i++) {
-            int output = random.nextInt(max);
-            output += min;
+            int output = random.nextInt(max - min + 1) + min;
             System.out.print(output + ", ");
         }
         System.out.println();
