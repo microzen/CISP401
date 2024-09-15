@@ -4,7 +4,32 @@ public class Dog {
     private int age;
     private double weight;
     private boolean fixed;
-    private char ownerIninial;
+    private char ownerLastInitial;
+
+    public Dog(){
+        this.setName("Unknown");
+        this.setBreed("Unknown");
+        this.setAge(0);
+        this.setWeight(0);
+        this.setFixed(false);
+        this.setOwnerLastInitial('?');
+    }
+    public Dog(double weight){
+        this.setWeight(weight);
+        this.setName("Unknown");
+        this.setBreed("Unknown");
+        this.setAge(0);
+        this.setFixed(false);
+        this.setOwnerLastInitial('?');;
+    }
+    public Dog(String breed){
+        this.setBreed(breed);
+        this.setName("Unknown");
+        this.setAge(0);
+        this.setWeight(0);
+        this.setFixed(false);
+        this.setOwnerLastInitial('?');
+    }
 
     public String getName() {
         return name;
@@ -22,8 +47,8 @@ public class Dog {
         return age;
     }
 
-    public char getOwnerIninial() {
-        return ownerIninial;
+    public char getOwnerLastInitial() {
+        return ownerLastInitial;
     }
 
     public double getWeight() {
@@ -42,10 +67,12 @@ public class Dog {
         this.fixed = fixed;
     }
 
-    public void setOwnerIninial(char ownerIninial) {
-        this.ownerIninial = Character.toUpperCase(ownerIninial);
+    public void setOwnerLastInitial(char ownerLastInitial) {
+        this.ownerLastInitial = Character.toUpperCase(ownerLastInitial);
     }
-
+    public void setOwnerLastInitial(String ownerLastInitial) {
+        this.setOwnerLastInitial(ownerLastInitial.charAt(0));
+    }
     /**
      *  set an age to the dog
      * @param age
@@ -71,7 +98,7 @@ public class Dog {
         this.setAge(newAge);
         this.setBreed(newBreed);
         this.setFixed(newFixed);
-        this.setOwnerIninial(newOwnerInitial);
+        this.setOwnerLastInitial(newOwnerInitial);
         this.setWeight(newWeight);
     }
 
@@ -118,6 +145,16 @@ public class Dog {
             sumOfWeight += dogs[i].getWeight();
         }
         System.out.println("The total weight of dogs is " + sumOfWeight);
+
+        System.out.println("\n-------Overloading Methods--------");
+        Dog stray = new Dog(38.99);
+        Dog newDog = new Dog();
+
+        System.out.println("\nCreat a new book with title and page");
+        Book v2book = new Book("Autobiography",200);
+        v2book.writeOnPage("Yezhi",100);
+        System.out.format("Read page 100: %s.\n",v2book.read(100));
+        System.out.format("Current page: %d.\n",v2book.getCurrentPage());
 
     }
 }
