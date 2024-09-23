@@ -1,4 +1,6 @@
-public class SudokuPuzzle {
+import java.io.Serializable;
+
+public class SudokuPuzzle implements Serializable {
     private int[][] grid;
     private int[][] original;
 
@@ -131,21 +133,23 @@ public class SudokuPuzzle {
     }
 
     public void display() {
+        System.out.println(this.toText());
+    }
+    public String toText(){
+        StringBuilder sb = new StringBuilder();
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
-
                 String output = String.format("%s ", grid[row][col] == 0 ? " " : grid[row][col]);
-                if ( (row+1) % 3 == 0 && row < 8) {
-                    String utxt = String.join("\u0332", output.split("", -1));
-                    System.out.print(utxt);
-                } else {
-                    System.out.print(output);
-                }
+                sb.append(output);
                 if ((col+1) % 3 == 0 && col < 8) {
-                    System.out.print("|");
+                    sb.append("|");
                 }
             }
-            System.out.println();
+            if ( (row+1) % 3 == 0 && row < 8) {
+                sb.append("\n").append("-".repeat(20));
+            }
+            sb.append("\n");
         }
+        return sb.toString();
     }
 }

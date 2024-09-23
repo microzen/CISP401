@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class SudokuBook implements Iterator<SudokuPuzzle> {
+public class SudokuBook implements Iterator<SudokuPuzzle>, Serializable {
     public SudokuPuzzle[] puzzles;
     private int sizeOfPages;
     private int currentPage = 0;
@@ -69,9 +70,10 @@ public class SudokuBook implements Iterator<SudokuPuzzle> {
             SudokuGenerator.solveSudoku(puzzle).display();
             System.out.println("\n\n");
         });
+    }
 
-
-
+    int getSize(){
+        return sizeOfPages;
     }
 
     @Override
