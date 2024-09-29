@@ -7,18 +7,22 @@ public class PaymentInfo {
     String name;
     int cvv;
     String address;
+
     PaymentInfo(String cardNumber, String name, int cvv, String address) {
         this.cardNumber = cardNumber;
         this.name = name;
         this.cvv = cvv;
         this.address = address;
     }
+
     public String getNumber() {
         return this.cardNumber;
     }
+
     public String getName() {
         return this.name;
     }
+
     public int getCVV() {
         return this.cvv;
     }
@@ -39,7 +43,7 @@ public class PaymentInfo {
         this.address = address;
     }
 
-    static PaymentInfo promptForInfo(){
+    static PaymentInfo promptForInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Card Number: ");
         String cardNumber = scanner.nextLine();

@@ -3,9 +3,14 @@ package eshop;
 public class Supplier {
     String name;
     Product products[];
-    public Supplier(String name, Product[] products){
+
+    public Supplier(String name, Product[] products) {
         this.name = name;
         this.products = products;
+    }
+
+    public Supplier(String name) {
+        this.name = name;
     }
 
     public void setName(String name) {
