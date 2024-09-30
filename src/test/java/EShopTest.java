@@ -51,7 +51,13 @@ public class EShopTest {
         Product apple = supplier.getProducts()[0];
         Product cake = supplier.getProducts()[1];
         Product milk = supplier.getProducts()[2];
-        apple.addStock(100);
+        Assertions.assertTrue(apple.addStock(100));
+        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> {
+            cake.setPrice(-10);
+        });
+        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> {
+            cake.setStock(-10);
+        });
         Assertions.assertEquals(110, apple.getStock());
         Assertions.assertFalse(apple.addStock(-111));
         Assertions.assertTrue(apple.addStock(-110));
@@ -67,7 +73,37 @@ public class EShopTest {
         Assertions.assertTrue(cart.addProduct(apple, 10));
         Assertions.assertTrue(cart.removeItem(apple));
         Assertions.assertFalse(cart.removeItem(apple));
+
         Assertions.assertEquals(0, cart.getTotalPirce());
+
+        cart.addProduct(cake, 10);
+        cart.addProduct(apple, 10);
+
+        Assertions.assertEquals(10 * 3.99 + 10 * 2.99, cart.getTotalPirce());
+
+        cart.clear();
+        Assertions.assertEquals(0, cart.getTotalPirce());
+
+
+    }
+
+    @Test
+    void paymentTest() {
+        PaymentInfo paymentInfo = new PaymentInfo("123456", "Ye", 123, "Sacramento");
+        Assertions.assertEquals(123, paymentInfo.getCVV());
+        Assertions.assertEquals("123456", paymentInfo.getNumber());
+        Assertions.assertEquals("Ye", paymentInfo.getName());
+        Assertions.assertEquals("Sacramento", paymentInfo.getAddress());
+
+        paymentInfo.setName("John");
+        paymentInfo.setCvv(321);
+        paymentInfo.setAddress("San Francisco");
+        paymentInfo.setNumber("98881");
+
+        Assertions.assertEquals("John", paymentInfo.getName());
+        Assertions.assertNotEquals("123456", paymentInfo.getNumber());
+        Assertions.assertEquals(321, paymentInfo.getCVV());
+        Assertions.assertEquals("San Francisco", paymentInfo.getAddress());
     }
 
     @Test

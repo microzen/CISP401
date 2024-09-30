@@ -8,7 +8,7 @@ public class PaymentInfo {
     int cvv;
     String address;
 
-    PaymentInfo(String cardNumber, String name, int cvv, String address) {
+    public PaymentInfo(String cardNumber, String name, int cvv, String address) {
         this.cardNumber = cardNumber;
         this.name = name;
         this.cvv = cvv;
@@ -25,6 +25,9 @@ public class PaymentInfo {
 
     public int getCVV() {
         return this.cvv;
+    }
+    public String getAddress() {
+        return this.address;
     }
 
     public void setNumber(String cardNumber) {

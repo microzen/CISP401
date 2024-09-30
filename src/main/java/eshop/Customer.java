@@ -21,9 +21,9 @@ public class Customer {
         this.password = password;
     }
 
-    ShoppingCart getCart() {
-        return cart;
-    }
+//    ShoppingCart getCart() {
+//        return cart;
+//    }
 
     public boolean addItemToCart(Product product, int quantity) {
         return cart.addProduct(product, quantity);
