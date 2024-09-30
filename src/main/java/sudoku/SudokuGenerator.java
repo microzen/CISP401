@@ -1,10 +1,12 @@
+package sudoku;
+
 import java.util.Random;
 
 public final class SudokuGenerator {
     private SudokuGenerator() {
     }
 
-    // generates a new SudokuPuzzle object based on an existing grid of numbers
+    // generates a new sudoku.SudokuPuzzle object based on an existing grid of numbers
     public static SudokuPuzzle generatePuzzle(int[][] grid) {
         if (grid.length != 9 || grid[0].length != 9) return null;
         SudokuPuzzle p = new SudokuPuzzle(grid);
@@ -14,7 +16,7 @@ public final class SudokuGenerator {
         return p;
     }
 
-    // randomly generates a new SudokuPuzzle object with the specified number of spaces filled
+    // randomly generates a new sudoku.SudokuPuzzle object with the specified number of spaces filled
     // the puzzle is guaranteed to have at least one solution, but may have more than one valid solution
 
     // may take several minutes to complete
@@ -43,7 +45,7 @@ public final class SudokuGenerator {
         }
         return p;
     }
-// randomly generates a new SudokuPuzzle object that only has one valid solution
+// randomly generates a new sudoku.SudokuPuzzle object that only has one valid solution
 
     // the number of spaces filled will vary
 // may take several minutes to complete
@@ -68,7 +70,7 @@ public final class SudokuGenerator {
         }
         return p;
     }
-// randomly generates a new SudokuPuzzle object based on the stated difficulty
+// randomly generates a new sudoku.SudokuPuzzle object based on the stated difficulty
 
     public static SudokuPuzzle generatePuzzle(String difficulty) {
         SudokuPuzzle p = null;

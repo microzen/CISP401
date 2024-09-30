@@ -1,3 +1,5 @@
+package sudoku;
+
 import java.io.Serializable;
 import java.util.Iterator;
 
@@ -72,7 +74,7 @@ public class SudokuBook implements Iterator<SudokuPuzzle>, Serializable {
         });
     }
 
-    int getSize(){
+    public int getSize(){
         return sizeOfPages;
     }
 

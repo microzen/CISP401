@@ -1,3 +1,5 @@
+package sudoku;
+
 import java.io.Serializable;
 
 public class SudokuPuzzle implements Serializable {
