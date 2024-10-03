@@ -1,3 +1,5 @@
+package lab;
+
 import java.io.*;
 
 public class ReaderAndWriter {

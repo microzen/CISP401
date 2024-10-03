@@ -1,3 +1,4 @@
+package lab;
 import java.io.Serializable;
 
 public class Date implements Serializable {
