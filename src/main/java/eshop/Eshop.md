@@ -2,7 +2,7 @@
 classDiagram
     Supplier -- Customer
     Supplier "0..*" o-- "1..1" Product
-    Product "1..1" --o "0..*" ShoppingCart
+    Product "1..1" --o "0..100" ShoppingCart
     Customer "1..1" *-- "1..1" ShoppingCart
     Customer "1..1 "*-- "1..1" PaymentInfo 
     class Product {
