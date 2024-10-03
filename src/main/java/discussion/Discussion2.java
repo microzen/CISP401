@@ -1,3 +1,5 @@
+package discussion;
+
 import java.util.Scanner;
 public class Discussion2 {
     public static void main(String[] args) {
