@@ -7,11 +7,9 @@ public class Complex {
     protected int imaginaryNumerator;
     protected int imaginaryDenominator;
 
-    public Complex(int realNum, int realDen, int imagNum, int imagDen) {
-//        if (DEBUG) {
-//            if (realDen == 0) throw new IllegalArgumentException("Real denominator cannot be zero");
-//            if (imagDen == 0) throw new IllegalArgumentException("Image denominator cannot be zero");
-//        }
+    public Complex(int realNum, int realDen, int imagNum, int imagDen) throws ArithmeticException {
+        if(realDen == 0) throw new ArithmeticException("The real denominator cannot be zero");
+        if(imagDen == 0) throw new ArithmeticException("The image denominator cannot be zero");
         this.realNumerator = realNum;
         this.realDenominator = realDen == 0 ? 1 : realDen;
         this.imaginaryNumerator = imagNum;
@@ -19,8 +17,8 @@ public class Complex {
     }
 
     public Complex(Complex copy) {
-//        if(copy.realDenominator == 0) throw new IllegalArgumentException("Real denominator cannot be zero");
-//        if(copy.imaginaryDenominator == 0) throw new IllegalArgumentException("Image denominator cannot be zero");
+        if(copy.realDenominator == 0) throw new ArithmeticException("The real denominator cannot be zero");
+        if(copy.imaginaryDenominator == 0) throw new ArithmeticException("The image denominator cannot be zero");
         this.realNumerator = copy.realNumerator;
         this.realDenominator = copy.realDenominator;
         this.imaginaryNumerator = copy.imaginaryNumerator;
@@ -43,20 +41,22 @@ public class Complex {
         return imaginaryDenominator;
     }
 
-    public void setRealNumerator(int realNumerator) {
+    public void setRealNumerator(int realNumerator) throws NumberAccessException {
         this.realNumerator = realNumerator;
     }
 
-    public void setRealDenominator(int realDenominator) {
-        this.realDenominator = (realDenominator == 0) ? 1 : realDenominator;
+    public void setRealDenominator(int realDenominator) throws NumberAccessException , ArithmeticException {
+        if(realDenominator == 0) throw new ArithmeticException("The real denominator cannot be zero");
+        this.realDenominator = realDenominator;
     }
 
-    public void setImaginaryNumerator(int imaginaryNumerator) {
+    public void setImaginaryNumerator(int imaginaryNumerator) throws NumberAccessException {
         this.imaginaryNumerator = imaginaryNumerator;
     }
 
-    public void setImaginaryDenominator(int imaginaryDenominator) {
-        this.imaginaryDenominator = (imaginaryDenominator == 0) ? 1 : imaginaryDenominator;
+    public void setImaginaryDenominator(int imaginaryDenominator) throws NumberAccessException, ArithmeticException {
+        if(imaginaryDenominator == 0) throw new ArithmeticException("The image denominator cannot be zero");
+        this.imaginaryDenominator = imaginaryDenominator;
     }
 
     public void simplify() {

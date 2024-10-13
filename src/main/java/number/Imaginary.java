@@ -1,38 +1,39 @@
 package number;
 
 public class Imaginary extends Complex {
-    public Imaginary(int num, int den) {
+    public Imaginary(int num, int den) throws ArithmeticException {
         super(0, 1, num, den);
     }
 
-    public Imaginary(Imaginary copy) {
-        super(copy);
+    public Imaginary(Imaginary copy) throws ArithmeticException {
+        this(copy.imaginaryNumerator, copy.imaginaryDenominator);
     }
 
     public int getNumerator() {
-        return super.getImaginaryNumerator();
+        return this.imaginaryNumerator;
     }
 
-    public void setNumerator(int numerator) {
-        super.setImaginaryNumerator(numerator);
+    public void setNumerator(int numerator) throws NumberAccessException {
+        this.realNumerator = numerator;
     }
 
     public int getDenominator() {
-        return super.getImaginaryDenominator();
+        return this.imaginaryDenominator;
     }
 
-    public void setDenominator(int denominator) {
-        super.setImaginaryDenominator(denominator);
-    }
-
-    @Override
-    public void setRealNumerator(int realNumerator) {
-
+    public void setDenominator(int denominator) throws NumberAccessException, ArithmeticException {
+        if(denominator==0) throw new ArithmeticException("Denominator could not be zero");
+        this.imaginaryDenominator = denominator;
     }
 
     @Override
-    public void setRealDenominator(int realDenominator) {
+    public void setRealNumerator(int realNumerator) throws NumberAccessException {
+        throw new NumberAccessException("The real could not be set by the mutators in imaginary");
+    }
 
+    @Override
+    public void setRealDenominator(int realDenominator) throws NumberAccessException {
+        throw new NumberAccessException("The real could not be set by the mutators in imaginary");
     }
 
     @Override

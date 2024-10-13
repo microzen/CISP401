@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class NumberTest {
     @Test
-    public void complexTest(){
+    public void complexTest() throws NumberAccessException {
         Complex complex = new Complex(6,2,4,5);
         Assertions.assertEquals("3/1+4/5i",complex.toString());
 
@@ -25,7 +25,7 @@ public class NumberTest {
         Assertions.assertEquals(complex, complex2, "Complex 1:" + complex + " Complex 2:" + complex2);
     }
     @Test
-    public void imaginaryTest(){
+    public void imaginaryTest() throws NumberAccessException {
         Imaginary imaginary = new Imaginary(4,5);
         Assertions.assertEquals("4/5i",imaginary.toString());
 
@@ -45,7 +45,7 @@ public class NumberTest {
     }
 
     @Test
-    public void rationalTest(){
+    public void rationalTest() throws NumberAccessException {
         Rational rational = new Rational(4,5);
         Assertions.assertEquals("4/5",rational.toString());
 
@@ -64,7 +64,7 @@ public class NumberTest {
         Assertions.assertEquals(rational, rational2);
     }
     @Test
-    public void naturalTest(){
+    public void naturalTest() throws NumberAccessException {
         Natural natural = new Natural(-1);
         Assertions.assertNotEquals("-1",natural.toString());
         natural.setRealNumerator(1);
@@ -73,7 +73,7 @@ public class NumberTest {
         Assertions.assertEquals(101, natural.addDouble(100));
     }
     @Test
-    public void integerTest(){
+    public void integerTest() throws NumberAccessException {
         number.Integer integer = new number.Integer(1);
         Assertions.assertEquals("1",integer.toString());
         integer.setRealNumerator(2);

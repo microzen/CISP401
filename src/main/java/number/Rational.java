@@ -1,36 +1,41 @@
 package number;
 
 public class Rational extends Complex {
-    public Rational(int numerator, int denominator) {
+    public Rational(int numerator, int denominator) throws ArithmeticException {
         super(numerator, denominator, 0, 1);
     }
 
-    public Rational(Rational copy) {
-        super(copy);
+    public Rational(Rational copy) throws ArithmeticException {
+        this(copy.getNumerator(), copy.getDenominator());
     }
 
     public int getNumerator() {
-        return super.getRealNumerator();
+        return this.realNumerator;
     }
 
     public int getDenominator() {
-        return super.getRealDenominator();
+        return this.realDenominator;
     }
 
-    public void setNumerator(int numerator) {
-        super.setRealNumerator(numerator);
+    public void setNumerator(int numerator) throws NumberAccessException, IllegalNaturalNumberException {
+        this.realNumerator = numerator;
     }
 
-    public void setDenominator(int denominator) {
-        super.setRealDenominator(denominator);
+    public void setDenominator(int denominator) throws NumberAccessException, ArithmeticException {
+        if (denominator == 0) {
+            throw new ArithmeticException("Denominator cannot be zero");
+        }
+        this.realDenominator = denominator;
     }
 
     @Override
-    public void setImaginaryDenominator(int imaginaryDenominator) {
+    public void setImaginaryDenominator(int imaginaryDenominator) throws NumberAccessException, ArithmeticException {
+        throw new NumberAccessException("The imaginary could not be set by the mutators in rational");
     }
 
     @Override
-    public void setImaginaryNumerator(int imaginaryNumerator) {
+    public void setImaginaryNumerator(int imaginaryNumerator) throws NumberAccessException {
+        throw new NumberAccessException("The imaginary could not be set by the mutators in rational");
     }
 
     @Override
@@ -44,7 +49,7 @@ public class Rational extends Complex {
         return str.toString();
     }
 
-    public double addDouble(double num) {
+    public double addDouble(double num) throws IllegalNaturalNumberException{
         return (double) this.getNumerator() / this.getDenominator() + num;
     }
 }
