@@ -1,3 +1,4 @@
+package lab.w10;
 
 public class IllegalSaleValueException extends Exception {
 

@@ -1,4 +1,6 @@
 package lab.w10;
 
-public class Lightbulb {
+public abstract class Lightbulb implements Light {
+    public abstract double getWattage();
 }
+

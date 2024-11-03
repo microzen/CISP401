@@ -1,4 +1,5 @@
 package lab.w10;
 
-public class Light {
+public interface Light {
+    double getLumens();
 }

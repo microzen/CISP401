@@ -1,8 +1,9 @@
+package lab.w10;
 
 public class MarkupSale extends Sale {
 	private double markup;	// a percent of the price to be increased by, given as a decimal
 	
-	public MarkupSale(String name, double price, double markup) throws IllegalSaleValueException{
+	public MarkupSale(String name, double price, double markup) throws IllegalSaleValueException {
 		super(name, price);
 		setMarkup(markup);
 	}
