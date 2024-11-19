@@ -2,9 +2,22 @@ package drawing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
-public class Board extends JPanel {
-    Color[][] board;
+public class Board extends JPanel implements MouseMotionListener {
+    private Color[][] board;
+    private Color penColor;
+    private boolean penDown;
+    public Board() {
+        penColor = Color.BLACK;
+        this.board = new Color[60][60];
+        this.FillColor(Color.WHITE);
+        this.addMouseMotionListener(this);
+    }
+    public void setPenColor(Color penColor) {
+        this.penColor = penColor;
+    }
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(600, 600);
@@ -26,6 +39,40 @@ public class Board extends JPanel {
 
     }
     public void setBoard(Color[][] board) {
-        this.board = board;
+        if (board == null) {
+            this.FillColor(Color.WHITE);
+        }else{
+            this.board = board;
+        }
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        int x = e.getX() / 10;
+        int y = e.getY() / 10;
+        this.board[x][y] = penColor;
+        this.repaint();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+    public void FillColor(Color color){
+        for (int x = 0; x < 60; x++) {
+            for (int y = 0; y < 60; y++) {
+                this.board[x][y] = color;
+            }
+        }
+        this.repaint();
+    }
+    public Color[][] getBoard() {
+        Color[][] board = new Color[60][60];
+        for (int x = 0; x < board.length; x++) {
+            for (int y = 0; y < board.length; y++) {
+                board[x][y] = this.board[x][y];
+            }
+        }
+        return board;
     }
 }
