@@ -29,12 +29,19 @@ public class Jar implements Comparable<Jar> {
 
     @Override
     public int compareTo(Jar o) {
-        if(this.getAmount() > o.getAmount()){
+        if(this.getAmount() == o.getAmount()){
+            if(this.getVolume() > o.getVolume()){
+                return 1;
+            } else if (this.getVolume() < o.getVolume()) {
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+        else if(this.getAmount() > o.getAmount()){
             return 1;
-        }else if(this.getAmount() < o.getAmount()){
-            return -1;
         }else{
-            return 0;
+            return -1;
         }
     }
 
@@ -53,13 +60,13 @@ public class Jar implements Comparable<Jar> {
 
         System.out.println("Unsorted");
         jars.forEach(e->{
-            System.out.printf("Amount: %.2f, Max Volume: %d\n",e.getAmount(),e.getVolume());
+            System.out.printf("Amount: %.2f, Max Volume: %doz\n",e.getAmount(),e.getVolume());
         });
 
         sort(jars);
         System.out.println("\nSorted");
         jars.forEach(e->{
-            System.out.printf("Amount: %.2f, Max Volume: %d\n",e.getAmount(),e.getVolume());
+            System.out.printf("Amount: %.2f, Max Volume: %doz\n",e.getAmount(),e.getVolume());
         });
     }
 }

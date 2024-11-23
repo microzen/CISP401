@@ -1,9 +1,9 @@
 package lab.w13;
 
-public class Exponent<T extends Number> extends Number{
-    private T number;
-    private T power;
-    public Exponent(T number, T power) {
+public class Exponent<Type extends Number,PowerType extends Number> extends Number{
+    private Type number;
+    private PowerType power;
+    public Exponent(Type number, PowerType power) {
         this.number = number;
         this.power = power;
     }
@@ -25,5 +25,10 @@ public class Exponent<T extends Number> extends Number{
     @Override
     public double doubleValue() {
         return Math.pow(number.doubleValue(), power.doubleValue());
+    }
+
+    public static void main(String[] args) {
+        Exponent<Double,Integer> exponent = new Exponent<>(10.5,2);
+        System.out.println(exponent.intValue());
     }
 }
