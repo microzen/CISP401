@@ -64,7 +64,7 @@ public class PriorityQueue<T> {
             int childIndex = (start << 1) + 1;
             Object child = heap[childIndex];
             int right = childIndex + 1;
-            if (right < end && // check non-leaf for the last element on the heap
+            if (right < end && // check if it is the last element on the heap
                     ((Comparable<? super T>) child).compareTo((T) heap[right]) < 0)
                 child = heap[childIndex = right];
             if (key.compareTo((T) child) >= 0)
