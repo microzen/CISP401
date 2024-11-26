@@ -151,6 +151,6 @@ public class Application extends JFrame implements ActionListener {
 
     }
     private void clearImage(){
-        board.FillColor(Color.white);
+        board.fillColor(Color.white);
     }
 }

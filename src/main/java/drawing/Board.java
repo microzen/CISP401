@@ -12,7 +12,7 @@ public class Board extends JPanel implements MouseMotionListener {
     public Board() {
         penColor = Color.BLACK;
         this.board = new Color[60][60];
-        this.FillColor(Color.WHITE);
+        this.fillColor(Color.WHITE);
         this.addMouseMotionListener(this);
     }
     public void setPenColor(Color penColor) {
@@ -40,7 +40,7 @@ public class Board extends JPanel implements MouseMotionListener {
     }
     public void setBoard(Color[][] board) {
         if (board == null) {
-            this.FillColor(Color.WHITE);
+            this.fillColor(Color.WHITE);
         }else{
             this.board = board;
         }
@@ -58,7 +58,7 @@ public class Board extends JPanel implements MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
 
     }
-    public void FillColor(Color color){
+    public void fillColor(Color color){
         for (int x = 0; x < 60; x++) {
             for (int y = 0; y < 60; y++) {
                 this.board[x][y] = color;
